@@ -32,4 +32,9 @@ public class CategoriasController {
 				.map(resposta -> ResponseEntity.ok(resposta))
 					.orElse(ResponseEntity.notFound().build());
 	}
+	@GetMapping(" /categorias/{categoria}")
+	public ResponseEntity<List<CategoriasModel>> getByCategoria(@PathVariable String categoria){
+		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
+	}
+	
 }
