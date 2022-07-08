@@ -55,8 +55,11 @@ public class CategoriasController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
-		repository.deleteById(id);
+	public ResponseEntity<?> delete (@PathVariable Long id){
+		return repository.findById(id).map(resposta -> 
+		{repository.deleteById(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}).orElse(ResponseEntity.notFound().build());
 	}
 	
 	
