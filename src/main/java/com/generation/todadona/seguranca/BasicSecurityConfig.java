@@ -31,7 +31,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests().antMatchers("/vendedora/logar").permitAll()
-		.antMatchers("/vendedora/cadastar").permitAll()
+		.antMatchers("/vendedora/cadastrar").permitAll()
 		.anyRequest().authenticated().and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors().and().csrf().disable();

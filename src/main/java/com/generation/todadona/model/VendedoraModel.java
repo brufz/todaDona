@@ -46,7 +46,7 @@ public class VendedoraModel {
 	private String email;
 
 	@NotNull
-	@Size(min = 8, max = 30)
+	@Size(min = 8)
 	private String senha;
 
 	@OneToMany(mappedBy = "vendedoras", cascade = CascadeType.ALL)
