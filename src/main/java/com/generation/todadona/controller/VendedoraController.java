@@ -47,7 +47,7 @@ public class VendedoraController {
 	
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<VendedoraModel> postUsuario(@Valid @RequestBody VendedoraModel vendedora) {
+	public ResponseEntity<VendedoraModel> cadastrarUsuario (@Valid @RequestBody VendedoraModel vendedora) {
 
 		return vendedoraService.cadastrarUsuario(vendedora)
 			.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))

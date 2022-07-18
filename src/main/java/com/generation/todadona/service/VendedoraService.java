@@ -4,8 +4,9 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.codec.Base64;
+
 import org.springframework.stereotype.Service;
 
 import com.generation.todadona.model.VendedoraLogin;
@@ -63,7 +64,7 @@ public class VendedoraService {
 	private String gerarBasicToken(String usuario, String senha) {
 
 		String token = usuario + ":" + senha;
-		byte[] tokenBase64 = Base64.encode(token.getBytes(Charset.forName("US-ASCII")));
+		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(tokenBase64);
 
 	}

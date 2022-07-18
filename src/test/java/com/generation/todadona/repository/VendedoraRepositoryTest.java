@@ -46,8 +46,8 @@ public class VendedoraRepositoryTest {
 	@DisplayName("Retorna 1 usuario")
 	public void deveRetornarUmUsuario() {
 
-		Optional<VendedoraModel> usuario = vendedoraRepository.findByCpf("43565467899");
-		assertTrue(usuario.get().getCpf().equals("43565467899"));
+		Optional<VendedoraModel> NomeVendedora = vendedoraRepository.findByCpf("43565467899");
+		assertTrue(NomeVendedora.get().getCpf().equals("43565467899"));
 	}
 
 	@Test

@@ -32,12 +32,11 @@ public class VendedoraModel {
 	private String nomeVendedora;
 
 	
-	@Schema(example = "11122233344")
+	
 	@NotNull(message = "O atributo Cpf é Obrigatório!")
-	@CPF(message = "O cpf deve ser válido!")
 	private String cpf;
 
-	
+	@NotNull
 	private String foto_documento;
 
 	@NotNull
@@ -48,8 +47,6 @@ public class VendedoraModel {
 	private String telefone;
 
 	@NotNull
-	
-	@Email(message = "O atributo deve ser um email válido!")
 	private String email;
 
 	@NotNull
@@ -141,5 +138,11 @@ public class VendedoraModel {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public List<ProdutosModel> getProdutos() {
+		return produtos;
+	}
 
+	public void setProdutos(List<ProdutosModel> produtos) {
+		this.produtos = produtos;
+	}
 }
