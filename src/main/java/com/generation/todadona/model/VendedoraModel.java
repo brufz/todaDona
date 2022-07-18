@@ -25,11 +25,11 @@ public class VendedoraModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotNull
 	@Size(min = 5, max = 55)
-	private String nome_vendedora;
+	private String nomeVendedora;
 
 	
 	@Schema(example = "11122233344")
@@ -41,15 +41,14 @@ public class VendedoraModel {
 	private String foto_documento;
 
 	@NotNull
-	@Size(min = 11, max = 255)
 	private String endereco;
 
 	@NotNull
-	@Size(min = 11, max = 11)
+	@Size(min = 11)
 	private String telefone;
 
 	@NotNull
-	@Size(min = 5, max = 55)
+	
 	@Email(message = "O atributo deve ser um email válido!")
 	private String email;
 
@@ -61,20 +60,38 @@ public class VendedoraModel {
 	@JsonIgnoreProperties("vendedoras")
 	private List<ProdutosModel> produtos;
 
-	public long getId() {
+	
+	
+	public VendedoraModel(Long id, String nomeVendedora, String cpf, String foto_documento, String senha, String endereco, String telefone, String email) {
+		this.id = id;
+		this.nomeVendedora = nomeVendedora;
+		this.cpf = cpf;
+		this.foto_documento = foto_documento;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+	}
+	
+	public VendedoraModel() {
+		
+	}
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getNome_vendedora() {
-		return nome_vendedora;
+	public String getNomeVendedora() {
+		return nomeVendedora;
 	}
 
-	public void setNome_vendedora(String nome_vendedora) {
-		this.nome_vendedora = nome_vendedora;
+	public void setNomeVendedora(String nomeVendedora) {
+		this.nomeVendedora = nomeVendedora;
 	}
 
 	public String getCpf() {

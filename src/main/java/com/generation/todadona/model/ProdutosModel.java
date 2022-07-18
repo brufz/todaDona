@@ -18,7 +18,7 @@ public class ProdutosModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull
 	@Size (min = 2 , max = 100)
@@ -58,10 +58,10 @@ public class ProdutosModel {
 	@JsonIgnoreProperties("produtos")
 	private VendedoraModel vendedoras; 
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome_produto() {
@@ -73,7 +73,7 @@ public class ProdutosModel {
 	public double getValor_produto() {
 		return valor_produto;
 	}
-	public void setValor_produto(double valor_produto) {
+	public void setValor_produto(Double valor_produto) {
 		this.valor_produto = valor_produto;
 	}
 	
