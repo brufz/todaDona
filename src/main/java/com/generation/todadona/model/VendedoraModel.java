@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,6 +18,26 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "tb_vendedoras")
 public class VendedoraModel {
+	
+
+	public VendedoraModel() {
+		super();
+	}
+
+	public VendedoraModel(long id, @NotNull @Size(min = 5, max = 55) String nomeVendedora,
+			@NotNull @Size(min = 11, max = 11) String cpf, @NotNull String foto_documento,
+			@NotNull @Size(min = 11, max = 255) String endereco, @NotNull @Size(min = 11, max = 11) String telefone,
+			@NotNull @Size(min = 5, max = 55) String email, @NotNull @Size(min = 8) String senha) {
+		super();
+		this.id = id;
+		this.nomeVendedora = nomeVendedora;
+		this.cpf = cpf;
+		this.foto_documento = foto_documento;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +45,13 @@ public class VendedoraModel {
 
 	@NotNull
 	@Size(min = 5, max = 55)
-	private String nome_vendedora;
+	private String nomeVendedora;
 
 	@NotNull
 	@Size(min = 11, max = 11)
 	private String cpf;
-
+	
+	@NotNull
 	private String foto_documento;
 
 	@NotNull
@@ -60,12 +82,15 @@ public class VendedoraModel {
 		this.id = id;
 	}
 
-	public String getNome_vendedora() {
-		return nome_vendedora;
+
+
+	
+	public String getNomeVendedora() {
+		return nomeVendedora;
 	}
 
-	public void setNome_vendedora(String nome_vendedora) {
-		this.nome_vendedora = nome_vendedora;
+	public void setNomeVendedora(String nomeVendedora) {
+		this.nomeVendedora = nomeVendedora;
 	}
 
 	public String getCpf() {
@@ -116,4 +141,13 @@ public class VendedoraModel {
 		this.senha = senha;
 	}
 
+	public List<ProdutosModel> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutosModel> produtos) {
+		this.produtos = produtos;
+	}
+
+	
 }

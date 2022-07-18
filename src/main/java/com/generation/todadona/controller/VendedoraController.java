@@ -2,6 +2,8 @@ package com.generation.todadona.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +32,15 @@ public class VendedoraController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Optional<VendedoraModel>> cadastro(@RequestBody VendedoraModel vendedora){
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(vendedoraService.cadastrarUsuario(vendedora));
-	}
 	
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<VendedoraModel> postUsuario(@Valid @RequestBody VendedoraModel vendedora) {
+
+		return vendedoraService.cadastrarUsuario(vendedora)
+			.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+
+	}
 
 }
