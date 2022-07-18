@@ -1,4 +1,4 @@
-package com.generation.todadona.seguranca;
+package com.generation.todadona.security;
 
 import java.util.Collection;
 

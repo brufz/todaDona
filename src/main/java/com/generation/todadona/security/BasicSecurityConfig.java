@@ -1,4 +1,4 @@
-package com.generation.todadona.seguranca;
+package com.generation.todadona.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,14 +18,22 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.userDetailsService(userDetailsService);
-	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Override
+	protected void configure (AuthenticationManagerBuilder auth) throws Exception {
+		
+		auth.userDetailsService(userDetailsService);
+		
+		//usuario adm
+		auth.inMemoryAuthentication()
+        .withUser("root")
+        .password(passwordEncoder().encode("root"))
+        .authorities("ROLE_USER");
 	}
 	
 	@Override
@@ -35,6 +43,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated().and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors().and().csrf().disable();
-		
 	}
+	
+	
 }

@@ -9,10 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "tb_vendedoras")
@@ -26,11 +31,13 @@ public class VendedoraModel {
 	@Size(min = 5, max = 55)
 	private String nome_vendedora;
 
-	@NotNull
-	@Size(min = 11, max = 11)
+	
+	@Schema(example = "11122233344")
+	@NotNull(message = "O atributo Cpf é Obrigatório!")
+	@CPF(message = "O cpf deve ser válido!")
 	private String cpf;
 
-	@NotNull
+	
 	private String foto_documento;
 
 	@NotNull
@@ -43,10 +50,11 @@ public class VendedoraModel {
 
 	@NotNull
 	@Size(min = 5, max = 55)
+	@Email(message = "O atributo deve ser um email válido!")
 	private String email;
 
 	@NotNull
-	@Size(min = 8)
+	@Size(min = 8, max = 255)
 	private String senha;
 
 	@OneToMany(mappedBy = "vendedoras", cascade = CascadeType.ALL)
