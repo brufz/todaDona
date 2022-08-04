@@ -22,7 +22,7 @@ import com.generation.todadona.service.VendedoraService;
 
 @RestController
 @RequestMapping("/vendedora")
-@CrossOrigin(origins = "", allowedHeaders = "")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class VendedoraController {
 	
 	@Autowired
