@@ -30,8 +30,12 @@ public class ProdutosModel {
 	
 	@NotNull
 	@Size (min = 10 , max = 500)
-	private String descricao_produto; 
-	
+	private String descricao_produto;
+
+	@NotNull
+	private String fotoProduto;
+
+
 	public String getDescricao_produto() {
 		return descricao_produto;
 	}
@@ -76,5 +80,14 @@ public class ProdutosModel {
 	public void setValor_produto(Double valor_produto) {
 		this.valor_produto = valor_produto;
 	}
-	
+
+	public String getFotoProduto() {
+		return fotoProduto;
+	}
+
+	public void setFotoProduto(String fotoProduto) {
+		this.fotoProduto = fotoProduto;
+	}
+
+
 }
