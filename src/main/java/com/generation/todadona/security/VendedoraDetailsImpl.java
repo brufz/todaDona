@@ -1,6 +1,7 @@
 package com.generation.todadona.security;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,8 @@ public class VendedoraDetailsImpl implements UserDetails {
 	private String userCpf;
 	private String password;
 
+	private List<GrantedAuthority> authorities;
+
 	public VendedoraDetailsImpl(VendedoraModel user) {
 		this.userCpf = user.getCpf();
 		this.password = user.getSenha();
@@ -23,8 +26,7 @@ public class VendedoraDetailsImpl implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return authorities;
 	}
 
 	@Override
